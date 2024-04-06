@@ -25,4 +25,38 @@ export class UserService {
 
     return this.prisma.user.create({ data });
   }
+
+  async getUsers(page: number = 1, limit: number = 10, search: string) {
+    const skip = (page - 1) * limit;
+    const take = limit;
+
+    let whereCondition = {};
+    if (search) {
+      whereCondition = {
+        OR: [
+          { name: { contains: search, mode: 'insensitive' } },
+          { username: { contains: search, mode: 'insensitive' } },
+          { email: { contains: search, mode: 'insensitive' } },
+        ],
+      };
+    }
+
+    const data = await this.prisma.user.findMany({
+      where: whereCondition,
+      skip: Number(skip),
+      take: Number(take),
+    });
+
+    const total = await this.prisma.user.count({ where: whereCondition });
+
+    return { data, total };
+  }
+
+  async getSingleUser(id: string) {
+    return await this.prisma.user.findFirst({
+      where: {
+        id,
+      },
+    });
+  }
 }

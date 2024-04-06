@@ -1,16 +1,19 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpStatus,
   Param,
   ParseUUIDPipe,
+  Patch,
   Post,
   Query,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/createUserDto';
 import { Response } from '../utils/response';
+import { UpdateUserDto } from './dto/updateUserDto';
 
 @Controller('users')
 export class UserController {
@@ -57,17 +60,46 @@ export class UserController {
 
   @Get(':id')
   async getSingleUser(@Param('id', ParseUUIDPipe) id: string) {
-    {
-      try {
-        const result = await this.userService.getSingleUser(id);
-        return Response.create(HttpStatus.OK, 'User get successful', result);
-      } catch (error) {
-        return Response.create(
-          HttpStatus.INTERNAL_SERVER_ERROR,
-          'Failed to get users',
-          error.message,
-        );
-      }
+    try {
+      const result = await this.userService.getSingleUser(id);
+      return Response.create(HttpStatus.OK, 'User get successful', result);
+    } catch (error) {
+      return Response.create(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        'Failed to get users',
+        error.message,
+      );
+    }
+  }
+
+  @Patch(':id')
+  async updateUser(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    try {
+      const result = await this.userService.updateUser(id, updateUserDto);
+      return Response.create(HttpStatus.OK, 'User update successful', result);
+    } catch (error) {
+      return Response.create(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        'Failed to update users',
+        error.message,
+      );
+    }
+  }
+
+  @Delete(':id')
+  async deleteUser(@Param('id', ParseUUIDPipe) id: string) {
+    try {
+      const result = await this.userService.deleteUser(id);
+      return Response.create(HttpStatus.OK, 'User delete successful', result);
+    } catch (error) {
+      return Response.create(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        'Failed to delete users',
+        error.message,
+      );
     }
   }
 }

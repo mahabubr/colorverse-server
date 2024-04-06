@@ -45,9 +45,20 @@ export class UserService {
       where: whereCondition,
       skip: Number(skip),
       take: Number(take),
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        role: true,
+        createdAt: true,
+        updatedAt: true,
+        username: true,
+      },
     });
 
-    const total = await this.prisma.user.count({ where: whereCondition });
+    const total = await this.prisma.user.count({
+      where: whereCondition,
+    });
 
     return { data, total };
   }
@@ -57,6 +68,23 @@ export class UserService {
       where: {
         id,
       },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        role: true,
+        createdAt: true,
+        updatedAt: true,
+        username: true,
+      },
     });
+  }
+
+  async updateUser(id: string, payload: Partial<User>) {
+    return this.prisma.user.update({ where: { id }, data: payload });
+  }
+
+  async deleteUser(id: string) {
+    return this.prisma.user.delete({ where: { id } });
   }
 }

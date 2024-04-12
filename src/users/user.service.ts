@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import generateUsername from './utls/generateUsername';
@@ -12,6 +12,14 @@ export class UserService {
   ) {}
 
   async createUser(payload: User) {
+    const isExistUser = await this.prisma.user.findFirst({
+      where: { email: payload.email },
+    });
+
+    if (isExistUser) {
+      throw new NotAcceptableException('User already Exist');
+    }
+
     const username = generateUsername();
     const hash = await this.hashPassword.hash(
       payload.password,

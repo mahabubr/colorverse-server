@@ -50,7 +50,7 @@ export class AuthService {
     try {
       verify = JwtHandler.verify(secret.token, process.env.JWT_SECRET);
     } catch (error) {
-      throw new ForbiddenException('Token not Found');
+      throw new ForbiddenException('Token not found');
     }
 
     const isUserExist = await this.prisma.user.findFirst({
@@ -70,5 +70,12 @@ export class AuthService {
     );
 
     return refresh;
+  }
+
+  async me(token: string) {
+    const decode: any = await JwtHandler.decode(token);
+    const { email } = decode;
+
+    return this.prisma.user.findFirst({ where: { email } });
   }
 }

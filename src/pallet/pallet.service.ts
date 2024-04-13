@@ -7,6 +7,15 @@ export class PalletService {
   constructor(private prisma: PrismaService) {}
 
   async createPallet(payload: Pallet) {
+    await this.prisma.user.update({
+      where: { id: payload.userId },
+      data: {
+        contribute: {
+          increment: 1,
+        },
+      },
+    });
+
     return this.prisma.pallet.create({ data: payload });
   }
 
@@ -28,6 +37,9 @@ export class PalletService {
       where: whereCondition,
       skip: Number(skip),
       take: Number(take),
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
 
     const total = await this.prisma.pallet.count({

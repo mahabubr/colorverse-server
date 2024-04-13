@@ -3,6 +3,8 @@ import {
   Controller,
   Get,
   HttpStatus,
+  Param,
+  ParseUUIDPipe,
   Post,
   Query,
   UseGuards,
@@ -48,6 +50,21 @@ export class PalletController {
         page,
         limit,
       );
+    } catch (error) {
+      return Response.create(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        'Failed to get pallet',
+        error.message,
+      );
+    }
+  }
+
+  @Get(':id')
+  @UseGuards(AuthGuard)
+  async getSinglePallet(@Param('id', ParseUUIDPipe) id: string) {
+    try {
+      const result = await this.palletService.getSinglePallet(id);
+      return Response.create(HttpStatus.OK, 'Pallet get successful', result);
     } catch (error) {
       return Response.create(
         HttpStatus.INTERNAL_SERVER_ERROR,

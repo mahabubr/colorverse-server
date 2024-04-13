@@ -48,4 +48,8 @@ export class PalletService {
 
     return { data, total };
   }
+
+  async getSinglePallet(id: string) {
+    return this.prisma.pallet.findUnique({ where: { id } });
+  }
 }

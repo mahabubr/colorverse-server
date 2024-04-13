@@ -23,6 +23,10 @@ export class CreateUserDto {
   role: 'creator' | 'admin';
 
   @IsOptional()
+  @IsString({ message: 'Contribute is Required' })
+  contribute: number;
+
+  @IsOptional()
   @IsDate()
   createdAt: Date;
 

@@ -14,12 +14,31 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(uuid())
-  username String @unique
-  name     String
-  password String
-  email    String
-  role     Role   @default(creator)
+  id         String @id @default(uuid())
+  username   String @unique
+  name       String
+  password   String
+  email      String
+  role       Role   @default(creator)
+  contribute Int    @default(0)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Pallete   Pallet[]
+}
+
+model Pallet {
+  id        String   @id @default(uuid())
+  primary   Json
+  secondary Json
+  accent    Json
+  light     Json
+  dark      Json
+  tags      String[]
+  likes     Int      @default(0)
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -3,6 +3,8 @@ import {
   Controller,
   Get,
   HttpStatus,
+  Param,
+  ParseUUIDPipe,
   Post,
   UseGuards,
 } from '@nestjs/common';
@@ -35,11 +37,11 @@ export class CollectionController {
     }
   }
 
-  @Get('')
+  @Get(':id')
   @UseGuards(AuthGuard)
-  async getCollection() {
+  async getCollection(@Param('id', ParseUUIDPipe) id: string) {
     try {
-      const result = await this.collectionService.getCollection();
+      const result = await this.collectionService.getCollection(id);
       return Response.create(
         HttpStatus.OK,
         'Collection get Successful',

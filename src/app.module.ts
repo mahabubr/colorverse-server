@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { PalletModule } from './pallet/pallet.module';
 import { PalletFilterModule } from './palletFilter/palletFilter.module';
+import { CollectionModule } from './collection/collection.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PalletFilterModule } from './palletFilter/palletFilter.module';
     AuthModule,
     PalletModule,
     PalletFilterModule,
+    CollectionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -22,9 +22,11 @@ model User {
   role       Role   @default(creator)
   contribute Int    @default(0)
 
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  Pallete   Pallet[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Pallete    Pallet[]
+  Collection Collection[]
 }
 
 model Pallet {
@@ -39,6 +41,21 @@ model Pallet {
 
   user   User   @relation(fields: [userId], references: [id])
   userId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Collection Collection[]
+}
+
+model Collection {
+  id String @id @default(uuid())
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  pallet   Pallet @relation(fields: [palletId], references: [id])
+  palletId String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

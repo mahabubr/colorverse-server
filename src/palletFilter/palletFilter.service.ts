@@ -24,4 +24,13 @@ export class PalletFilterService {
 
     return uniqueTags;
   }
+
+  async getUserPallet(id: string) {
+    return this.prisma.pallet.findMany({
+      where: { user: { id } },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
 }

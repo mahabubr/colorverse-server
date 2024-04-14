@@ -64,6 +64,7 @@ export class UserService {
         createdAt: true,
         updatedAt: true,
         username: true,
+        contribute: true,
       },
     });
 
@@ -87,6 +88,7 @@ export class UserService {
         createdAt: true,
         updatedAt: true,
         username: true,
+        contribute: true,
       },
     });
   }

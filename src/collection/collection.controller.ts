@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpStatus,
   Param,
@@ -51,6 +52,25 @@ export class CollectionController {
       return Response.create(
         HttpStatus.INTERNAL_SERVER_ERROR,
         'Failed to get collection',
+        error.message,
+      );
+    }
+  }
+
+  @Delete(':id')
+  @UseGuards(AuthGuard)
+  async deleteCollection(@Param('id', ParseUUIDPipe) id: string) {
+    try {
+      const result = await this.collectionService.deleteCollection(id);
+      return Response.create(
+        HttpStatus.OK,
+        'Collection delete Successful',
+        result,
+      );
+    } catch (error) {
+      return Response.create(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        'Failed to delete collection',
         error.message,
       );
     }

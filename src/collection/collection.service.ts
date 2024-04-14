@@ -38,4 +38,8 @@ export class CollectionService {
       },
     });
   }
+
+  async deleteCollection(id: string) {
+    return this.prisma.collection.delete({ where: { id } });
+  }
 }

@@ -50,6 +50,11 @@ export class PalletService {
   }
 
   async getSinglePallet(id: string) {
-    return this.prisma.pallet.findUnique({ where: { id } });
+    return this.prisma.pallet.findUnique({
+      where: { id },
+      include: {
+        user: true,
+      },
+    });
   }
 }

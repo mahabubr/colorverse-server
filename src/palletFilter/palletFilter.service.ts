@@ -16,7 +16,9 @@ export class PalletFilterService {
       return acc.concat(cur.tags);
     }, []);
 
-    const uniqueTagsSets = new Set(margeTags);
+    const sortTags = margeTags.sort((a, b) => a.localeCompare(b));
+
+    const uniqueTagsSets = new Set(sortTags);
 
     const uniqueTags = Array.from(uniqueTagsSets);
 

@@ -5,6 +5,7 @@ import { UserModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { PalletModule } from './pallet/pallet.module';
+import { PalletFilterModule } from './palletFilter/palletFilter.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { PalletModule } from './pallet/pallet.module';
     UserModule,
     AuthModule,
     PalletModule,
+    PalletFilterModule,
   ],
   controllers: [AppController],
   providers: [AppService],

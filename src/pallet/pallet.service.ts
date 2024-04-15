@@ -57,4 +57,15 @@ export class PalletService {
       },
     });
   }
+
+  async deletePallet(id: string) {
+    await this.prisma.collection.deleteMany({
+      where: {
+        pallet: {
+          id,
+        },
+      },
+    });
+    return this.prisma.pallet.delete({ where: { id } });
+  }
 }

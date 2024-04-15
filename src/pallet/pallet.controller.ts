@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpStatus,
   Param,
@@ -69,6 +70,21 @@ export class PalletController {
       return Response.create(
         HttpStatus.INTERNAL_SERVER_ERROR,
         'Failed to get pallet',
+        error.message,
+      );
+    }
+  }
+
+  @Delete(':id')
+  @UseGuards(AuthGuard)
+  async deletePallet(@Param('id', ParseUUIDPipe) id: string) {
+    try {
+      const result = await this.palletService.deletePallet(id);
+      return Response.create(HttpStatus.OK, 'Pallet delete Successful', result);
+    } catch (error) {
+      return Response.create(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        'Failed to delete Pallet',
         error.message,
       );
     }

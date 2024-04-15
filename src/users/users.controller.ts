@@ -9,11 +9,13 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/createUserDto';
 import { Response } from '../utils/response';
 import { UpdateUserDto } from './dto/updateUserDto';
+import { AuthGuard } from 'src/guard/auth.guard';
 
 @Controller('users')
 export class UserController {
@@ -53,6 +55,25 @@ export class UserController {
       return Response.create(
         HttpStatus.INTERNAL_SERVER_ERROR,
         'Failed to get users',
+        error.message,
+      );
+    }
+  }
+
+  @Get('top-contributor')
+  @UseGuards(AuthGuard)
+  async getTopContributor() {
+    try {
+      const result = await this.userService.getTopContributor();
+      return Response.create(
+        HttpStatus.OK,
+        'Top contributor get successful',
+        result,
+      );
+    } catch (error) {
+      return Response.create(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        'Failed to get top contributor',
         error.message,
       );
     }

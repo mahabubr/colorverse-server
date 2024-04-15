@@ -100,4 +100,13 @@ export class UserService {
   async deleteUser(id: string) {
     return this.prisma.user.delete({ where: { id } });
   }
+
+  async getTopContributor() {
+    return this.prisma.user.findMany({
+      orderBy: {
+        contribute: 'desc',
+      },
+      take: 10,
+    });
+  }
 }

@@ -36,6 +36,7 @@ export class UserController {
   }
 
   @Get()
+  @UseGuards(AuthGuard)
   async getUsers(
     @Query('page') page: number = 1,
     @Query('limit') limit: number = 10,
@@ -74,6 +75,25 @@ export class UserController {
       return Response.create(
         HttpStatus.INTERNAL_SERVER_ERROR,
         'Failed to get top contributor',
+        error.message,
+      );
+    }
+  }
+
+  @Get('recent-users')
+  @UseGuards(AuthGuard)
+  async getRecentUsers() {
+    try {
+      const result = await this.userService.getRecentUsers();
+      return Response.create(
+        HttpStatus.OK,
+        'Recent users get successful',
+        result,
+      );
+    } catch (error) {
+      return Response.create(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        'Failed to get recent users',
         error.message,
       );
     }

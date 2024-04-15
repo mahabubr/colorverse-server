@@ -109,4 +109,13 @@ export class UserService {
       take: 10,
     });
   }
+
+  async getRecentUsers() {
+    return this.prisma.user.findMany({
+      orderBy: {
+        createdAt: 'desc',
+      },
+      take: 10,
+    });
+  }
 }

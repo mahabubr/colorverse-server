@@ -27,6 +27,10 @@ export class CreateUserDto {
   contribute: number;
 
   @IsOptional()
+  @IsString({ message: 'Bio is Required' })
+  bio: string;
+
+  @IsOptional()
   @IsDate()
   createdAt: Date;
 

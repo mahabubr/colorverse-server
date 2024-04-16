@@ -65,6 +65,10 @@ export class UserService {
         updatedAt: true,
         username: true,
         contribute: true,
+        bio: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
 
@@ -89,6 +93,7 @@ export class UserService {
         updatedAt: true,
         username: true,
         contribute: true,
+        bio: true,
       },
     });
   }

@@ -21,6 +21,7 @@ model User {
   email      String
   role       Role   @default(creator)
   contribute Int    @default(0)
+  bio        String @default("Wellcome to color stage")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

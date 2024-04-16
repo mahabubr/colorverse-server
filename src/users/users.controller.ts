@@ -62,7 +62,7 @@ export class UserController {
   }
 
   @Get('top-contributor')
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   async getTopContributor() {
     try {
       const result = await this.userService.getTopContributor();
@@ -81,7 +81,7 @@ export class UserController {
   }
 
   @Get('recent-users')
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   async getRecentUsers() {
     try {
       const result = await this.userService.getRecentUsers();

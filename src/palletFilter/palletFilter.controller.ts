@@ -15,7 +15,7 @@ export class PalletFilterController {
   constructor(private palletFilterService: PalletFilterService) {}
 
   @Get('options')
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   async getFilterOptions() {
     try {
       const result = await this.palletFilterService.getPalletFilter();

@@ -66,6 +66,17 @@ export class PalletService {
         },
       },
     });
+
+    const res = await this.prisma.pallet.findFirst({ where: { id } });
+    await this.prisma.user.update({
+      where: { id: res.userId },
+      data: {
+        contribute: {
+          decrement: 1,
+        },
+      },
+    });
+
     return this.prisma.pallet.delete({ where: { id } });
   }
 }

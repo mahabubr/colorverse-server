@@ -11,13 +11,26 @@ export class CommentService {
   }
 
   async getAllComments(id: string) {
-    return this.prisma.comments.findMany({ where: { pallet: { id } } });
+    return this.prisma.comments.findMany({
+      where: { pallet: { id } },
+      include: {
+        user: true,
+        pallet: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
   }
 
   async getRecentComments() {
     return this.prisma.comments.findMany({
-      orderBy: { createdAt: 'asc' },
+      orderBy: { createdAt: 'desc' },
       take: 10,
+      include: {
+        user: true,
+        pallet: true,
+      },
     });
   }
 }

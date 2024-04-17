@@ -1,8 +1,11 @@
 import { IsString, IsOptional } from 'class-validator';
 
-export class CreateCollectionDto {
+export class CreateCommentDto {
   @IsOptional()
   id: string;
+
+  @IsString({ message: 'Comment is required' })
+  comment: string;
 
   @IsString({ message: 'User Id is required' })
   userId: string;

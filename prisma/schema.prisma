@@ -28,6 +28,7 @@ model User {
 
   Pallete    Pallet[]
   Collection Collection[]
+  Comments   Comments[]
 }
 
 model Pallet {
@@ -47,10 +48,25 @@ model Pallet {
   updatedAt DateTime @updatedAt
 
   Collection Collection[]
+  Comments   Comments[]
 }
 
 model Collection {
   id String @id @default(uuid())
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  pallet   Pallet @relation(fields: [palletId], references: [id])
+  palletId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Comments {
+  id      String @id @default(uuid())
+  comment String
 
   user   User   @relation(fields: [userId], references: [id])
   userId String

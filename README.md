@@ -1,73 +1,184 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+<div align="center">
+<img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/nodejs_alt.svg" width="100" />
+</div>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# [Color Verse - Color Pallet Generator Web Application](https://color-verse.vercel.app/)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+\_Step into the vibrant realm of Colorverse, your ultimate destination for all things color! Unleash your imagination with our intuitive palette generator, curate personalized selections, and inspire others with your unique creations. Join a community of passionate designers, artists, and visionaries, and let your creativity thrive in a kaleidoscope of hues.
 
-## Description
+## Credentials
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Email: mr@creator.com
+- Password: 12345678
 
-## Installation
+## Technologies
 
-```bash
-$ npm install
+- Node Js
+- Nest Js
+- Typescript
+- Prisma
+- PostgreSQL
+- Json Web Token
+- Bcrypt
+
+## Features
+
+- Secure login and signup options with encrypted data.
+- Random Password generator.
+- Generate color pallet by select keys and auto generate colors and reset option.
+- Select colors from 8 pallets and make 5 colors at a time.
+- Auto generate colors tags.
+- Get color code hex, rgb, hsl, hsv, oldHue.
+- View all color pallet.
+- Search, Filter and Pagination the color pallets.
+- Auto suggestion search.
+- Copy hex code from color pallets.
+- Download color pallet options and copy the pallet url options.
+- In single pallet view hex, rgb, hsl, hsv color codes.
+- Get color tags and view contributions.
+- Comment section and view the all comments for specific pallets.
+- Pallet collection options for specific user.
+- Not more then collect 12 pallet with not added 2 or more pallets at a time.
+- Collection delete options.
+- View top contributions, recent users and recent comments.
+- View all users with Search and Pagination options.
+- Have a user profile there view information.
+- View user specific pallet and delete option.
+- Edit profile information.
+- Great user experience all devices.
+- Skeleton loading.
+- Responsive gor all devices.
+- Exceptions handling.
+
+## Non-Functional Feature
+
+### Security
+
+- User passwords must be securely stored using appropriate hashing and salting techniques.
+- API endpoints handling sensitive information should be protected using secure protocols (HTTPS).
+- Authentication tokens should be securely generated and validated to prevent unauthorized access.
+
+### Performance
+
+- The API should be able to handle a high volume of concurrent requests efficiently.
+- Response times should be optimized to ensure a responsive user experience.
+
+### Scalability
+
+- The application should be designed to accommodate future growth and increasing user demands.
+- The architecture should allow for horizontal scalability, such as load balancing and distributed processing.
+
+### Reliability
+
+- The API should be highly available, minimizing downtime and ensuring data integrity.
+- Error handling and logging should be implemented to facilitate troubleshooting and maintenance.
+
+### Constraints
+
+- The REST API Application should be implemented using a specific programming language or framework.
+- The API may depend on external services or libraries for certain functionalities.
+
+## Folder Structure
+
+```
+.
+├── .vscode/
+│   └── setting.json/
+├── dist/
+├── node_modules/
+├── prisma/
+│   ├── migrations/
+│   ├── schema.prisma/
+├── src/
+│   ├── auth/
+│   │   ├── dto/
+│   │   ├── auth.controller.ts/
+│   │   ├── auth.module.ts/
+│   │   └── auth.service.ts/
+│   ├── collection/
+│   │   ├── dto/
+│   │   ├── collection.controller.ts/
+│   │   ├── collection.module.ts/
+│   │   └── collection.service.ts/
+│   ├── comments/
+│   │   ├── dto/
+│   │   ├── comments.controller.ts/
+│   │   ├── comments.module.ts/
+│   │   └── comments.service.ts/
+│   ├── guard/
+│   │   └── auth.guard.ts/
+│   ├── pallet/
+│   │   ├── dto/
+│   │   ├── pallet.controller.ts/
+│   │   ├── pallet.module.ts/
+│   │   └── pallet.service.ts/
+│   ├── palletFilter/
+│   │   ├── palletFilter.controller.ts/
+│   │   ├── palletFilter.module.ts/
+│   │   └── palletFilter.service.ts/
+│   ├── prisma/
+│   │   ├── prisma.module.ts/
+│   │   └── prisma.service.ts/
+│   ├── users/
+│   │   ├── dto/
+│   │   ├── utils/
+│   │   ├── users.controller.ts/
+│   │   ├── users.module.ts/
+│   │   └── users.service.ts/
+│   ├── utils/
+│   │   ├── hashPassword.ts/
+│   │   ├── jstHandler.ts/
+│   │   ├── response.ts/
+│   ├── app.controller.spec.ts
+│   └── app.controller.ts
+│   └── app.module.ts
+│   └── app.service.ts
+│   └── main.ts
+├── test
+├── .env
+├── .eslintignore
+├── .eslintrc
+├── .gitignore
+├── .prettierrc
+├── next-cli.json
+├── package.lock.json
+├── package.json
+├── tsconfig
+├── vercel.json
+└── README.md
+
 ```
 
-## Running the app
+## Installations
 
-```bash
-# development
-$ npm run start
+1. Clone the git repository
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+git clone https://github.com/mahabubr/colorverse-server
 ```
 
-## Test
+2. Install the dependencies
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```
+npm install
 ```
 
-## Support
+### Configuration
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+1. Create a .env file in the root directory of the project.
+2. Add your environment variables to the .env file. Here's an example with placeholders:
 
-## Stay in touch
+```
+DATABASE_URL=""
+SALT_ROUND=""
+JWT_SECRET=""
+JWT_EXPIRES_IN=""
+JWT_REFRESH_EXPIRES_IN=""
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Scripts
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+- `start`: Build and start the application in production mode.
+- `start:dev`: Start the development server with automatic restart using nodemon.
+- `build`: Run tests, build TypeScript code, and generate TypeScript aliases.
+- `test`: Run tests using Jest.

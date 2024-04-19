@@ -33,7 +33,6 @@ export class CommentController {
   }
 
   @Get('recent')
-  @UseGuards(AuthGuard)
   async getRecentComments() {
     try {
       const result = await this.commentService.getRecentComments();

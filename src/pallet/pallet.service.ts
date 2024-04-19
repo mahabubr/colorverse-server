@@ -59,6 +59,14 @@ export class PalletService {
   }
 
   async deletePallet(id: string) {
+    await this.prisma.comments.deleteMany({
+      where: {
+        pallet: {
+          id,
+        },
+      },
+    });
+
     await this.prisma.collection.deleteMany({
       where: {
         pallet: {

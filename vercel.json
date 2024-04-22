@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "github": {
-    "enable": false
-  },
   "builds": [
     {
       "src": "dist/main.js",

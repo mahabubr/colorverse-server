@@ -1,7 +1,7 @@
 import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
-import generateUsername from './utls/generateUsername';
+// import generateUsername from './utls/generateUsername';
 import { HashPassword } from '../utils/hashPassword';
 
 @Injectable()
@@ -20,7 +20,7 @@ export class UserService {
       throw new NotAcceptableException('User already Exist');
     }
 
-    const username = generateUsername();
+    const username = 'asawaes';
     const hash = await this.hashPassword.hash(
       payload.password,
       Number(process.env.SALT_ROUND),

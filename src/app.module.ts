@@ -8,9 +8,15 @@ import { PalletModule } from './pallet/pallet.module';
 import { PalletFilterModule } from './palletFilter/palletFilter.module';
 import { CollectionModule } from './collection/collection.module';
 import { CommentModule } from './comments/comments.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(join(__dirname)),
+      exclude: ['/*'],
+    }),
     ConfigModule.forRoot({ envFilePath: '.env' }),
     UserModule,
     AuthModule,

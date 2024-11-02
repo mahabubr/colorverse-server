@@ -6,8 +6,8 @@ import {
   ParseUUIDPipe,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from 'src/guard/auth.guard';
-import { Response } from 'src/utils/response';
+import { AuthGuard } from '../guard/auth.guard';
+import { Response } from '..//utils/response';
 import { PalletFilterService } from './palletFilter.service';
 
 @Controller('pallet-filter')

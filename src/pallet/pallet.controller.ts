@@ -12,8 +12,8 @@ import {
 } from '@nestjs/common';
 import { CreatePaletteDto } from './dto/createPalletDto';
 import { PalletService } from './pallet.service';
-import { Response } from 'src/utils/response';
-import { AuthGuard } from 'src/guard/auth.guard';
+import { Response } from '../utils/response';
+import { AuthGuard } from '../guard/auth.guard';
 
 @Controller('pallet')
 export class PalletController {

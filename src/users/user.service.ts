@@ -1,6 +1,6 @@
 import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import generateUsername from './utls/generateUsername';
 import { HashPassword } from '../utils/hashPassword';
 

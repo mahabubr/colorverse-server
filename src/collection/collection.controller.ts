@@ -10,8 +10,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { CollectionService } from './collection.service';
-import { Response } from 'src/utils/response';
-import { AuthGuard } from 'src/guard/auth.guard';
+import { Response } from '../utils/response';
+import { AuthGuard } from '../guard/auth.guard';
 import { CreateCollectionDto } from './dto/collection.dto';
 
 @Controller('collection')

@@ -9,9 +9,9 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { CommentService } from './comments.service';
-import { AuthGuard } from 'src/guard/auth.guard';
+import { AuthGuard } from '../guard/auth.guard';
 import { CreateCommentDto } from './dto/comments.dto';
-import { Response } from 'src/utils/response';
+import { Response } from '../utils/response';
 
 @Controller('comments')
 export class CommentController {

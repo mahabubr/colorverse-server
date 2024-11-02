@@ -4,9 +4,9 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { HashPassword } from 'src/utils/hashPassword';
-import { JwtHandler } from 'src/utils/jwtHandler';
+import { PrismaService } from '../prisma/prisma.service';
+import { HashPassword } from '../utils/hashPassword';
+import { JwtHandler } from '../utils/jwtHandler';
 
 @Injectable()
 export class AuthService {

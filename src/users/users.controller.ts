@@ -15,7 +15,7 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/createUserDto';
 import { Response } from '../utils/response';
 import { UpdateUserDto } from './dto/updateUserDto';
-import { AuthGuard } from 'src/guard/auth.guard';
+import { AuthGuard } from '../guard/auth.guard';
 
 @Controller('users')
 export class UserController {
